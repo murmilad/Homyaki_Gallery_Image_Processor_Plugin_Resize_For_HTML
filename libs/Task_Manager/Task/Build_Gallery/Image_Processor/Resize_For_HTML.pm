@@ -18,7 +18,7 @@ sub process {
 	my $dest_path   = $h{dest_path};
 	my $source_path = $h{source_path};
 
-	my $img = rotate($image);
+	my $img = Homyaki::Imager::rotate($image);
 
 	Homyaki::Logger::print_log("Build_Gallery: load_images: Change $source_path size:");
 
