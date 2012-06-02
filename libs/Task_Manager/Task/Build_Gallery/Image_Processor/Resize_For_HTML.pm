@@ -4,7 +4,7 @@ use strict;
 
 use Imager;
 
-use Homyaki::Imager;
+use Homyaki::Imager qw(rotate change_size);
 use Homyaki::Logger;
 
 use base 'Homyaki::Task_Manager::Task::Build_Gallery::Image_Processor';
@@ -18,7 +18,7 @@ sub process {
 	my $dest_path   = $h{dest_path};
 	my $source_path = $h{source_path};
 
-	my $img = Homyaki::Imager::rotate($image);
+	my $img = rotate($image);
 
 	Homyaki::Logger::print_log("Build_Gallery: load_images: Change $source_path size:");
 
