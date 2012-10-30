@@ -31,10 +31,14 @@ sub process {
 	
 	my $fullpic = change_size($img, 800);
 
-	unless ($fullpic->write(file=>$dest_path->{pic})) {
+	if ($fullpic->write(file=>$dest_path->{pic})) {
+		$self->{exif_tool}->WriteInfo($source_path, $dest_path->{pic});
+	} else {
 		Homyaki::Logger::print_log("Build_Gallery: load_images: Error: ($dest_path->{pic})" . $img->errstr());
 		print STDERR "$dest_path->{pic} - ",$img->errstr(),"\n";
 	}
+
+	
 
 	return $fullpic;
 }
